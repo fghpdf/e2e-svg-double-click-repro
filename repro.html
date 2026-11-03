@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>SVG label double-click reproduction</title>
+<body>
+  <h1>Double-click the node to edit its label</h1>
+  <div id="node" style="position: relative; width: 200px; height: 80px">
+    <svg width="200" height="80" style="position: absolute; inset: 0">
+      <path d="M1 1H199V79H1Z" fill="white" stroke="black" />
+    </svg>
+    <textarea aria-label="Edit label" readonly
+      style="position: absolute; inset: 0; pointer-events: none; background: transparent"
+    >Node</textarea>
+  </div>
+  <script>
+    const node = document.querySelector('#node');
+    const label = node.querySelector('textarea');
+    if (new URLSearchParams(location.search).has('accessible')) {
+      node.setAttribute('role', 'group');
+      node.setAttribute('aria-label', 'Diagram node');
+    }
+    node.addEventListener('dblclick', () => {
+      label.readOnly = false;
+      label.style.pointerEvents = 'auto';
+      label.focus();
+    });
+  </script>
+</body>
+</html>

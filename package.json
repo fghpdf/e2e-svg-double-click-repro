@@ -1,0 +1,21 @@
+{
+  "name": "e2e-svg-double-click-repro",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Runnable reproduction of tester-army/e2e issue #1327",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.8.0"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "e2e run tests/controls.e2e.ts",
+    "repro": "e2e run tests/repro.e2e.ts",
+    "browsers": "e2e-web install chromium"
+  },
+  "devDependencies": {
+    "@e2e-dev/web": "0.15.2",
+    "e2e": "0.21.2"
+  }
+}
